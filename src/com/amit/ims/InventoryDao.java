@@ -18,34 +18,52 @@ public class InventoryDao {
 
     protected boolean addStockUnit(Integer no, StockUnit sua) {
         boolean suFlag=false;
+        Integer valZero = 0;
 
-        for (Product po : pr){
+            int idF= sua.getUnitId().compareTo(valZero);
+            int qtF = sua.getQuantity().compareTo(valZero);
+            int pIdF = sua.getProductId().compareTo(valZero);
+             int pNoF = no.compareTo(valZero);
 
-            Integer stockPrChk = po.getId().compareTo(sua.getProductId());
-            if (stockPrChk==0){
-                suFlag=true;
-                su.put(no, sua);
+            if (idF==1 && qtF==1 && pIdF==1 && pNoF==1 ){
 
-                break;
+                for (Product po : pr){
+
+                    Integer stockPrChk = po.getId().compareTo(sua.getProductId());
+                    if (stockPrChk==0){
+                        suFlag=true;
+                        su.put(no, sua);
+                        break;
+                    }
+                }
+
+                if (suFlag==true) {
+                    if (su.containsKey(no)) {
+                        suFlag = true;
+                    }else {
+                        suFlag=false;
+                    }
+                }
+
             }
-        }
 
-        if (suFlag==true) {
-            if (su.containsKey(no)) {
-                suFlag = true;
-            }else {
-                suFlag=false;
-            }
-        }
 
         return suFlag;
     }
 
     protected boolean addProduct(Product pra) {
 
-        pr.add(pra);
-
         boolean prdAdd = false;
+        Integer ptt= 0;
+        boolean descF = pra.getDescription().trim().equalsIgnoreCase("");
+        boolean nameF = pra.getName().trim().equalsIgnoreCase("");
+        int catF = pra.getCatalogId().compareTo(ptt);
+        int idF =pra.getId().compareTo(ptt);
+
+
+    if (descF ==false && nameF ==false && catF ==1 && idF ==1 )    {
+
+        pr.add(pra);
 
         for (Product pt : pr) {
 
@@ -55,6 +73,8 @@ public class InventoryDao {
             }
 
         }
+     }
+
 
         return prdAdd;
 
@@ -66,15 +86,16 @@ public class InventoryDao {
         pc.add(pca);
     }
 
-    public void listAllProduct() {
+    public ArrayList<Product> listAllProduct() {
 
+        ArrayList<Product> temp = new ArrayList<>();
 
         for (Product pt : pr) {
 
-            System.out.println(pt);
+            temp.add(pt);
 
         }
-
+        return temp;
     }
 
     public void listAllProductCatalog() {
@@ -89,13 +110,16 @@ public class InventoryDao {
 
     }
 
-    public void listAllStockUnit() {
+    public ArrayList<StockUnit> listAllStockUnit() {
+
+        ArrayList<StockUnit> stArrTemp = new ArrayList<>();
 
         for (StockUnit ssu : su.values()){
 
+                stArrTemp.add(ssu);
 
-            System.out.println("Unit Id : "+ssu.getUnitId()+",Product Id : "+ssu.getProductId()+" , Quantity : "+ssu.getQuantity());
         }
+        return stArrTemp;
     }
 
     public boolean getStockUnitByProductName(String spn) {

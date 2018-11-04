@@ -1,5 +1,7 @@
 package com.amit.ims;
 
+import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ImsLoadData {
@@ -27,9 +29,11 @@ public class ImsLoadData {
             System.out.println("Please enter your choice from Menu");
             String inp = sc.nextLine();
 
-            switch (inp.toUpperCase()){
+            switch (inp.toUpperCase()) {
 
                 case "A":
+
+                    try{
 
                         System.out.println("Please enter Product details to be added (Id, Name, Description, CatalogId)");
 
@@ -37,7 +41,7 @@ public class ImsLoadData {
                         Integer id = sc1.nextInt();
 
 
-                       System.out.println("Please enter Product: Name");
+                        System.out.println("Please enter Product: Name");
                         String enmae = sc1.next();
 
 
@@ -56,16 +60,23 @@ public class ImsLoadData {
                             System.out.println("Error obtained while adding Product, Please contact support team");
 
                         }
-
+                    }catch (InputMismatchException e){
+                        System.out.println("Please enter correct input from your keyboard");
+                    }finally {
                         break;
+                    }
+
 
                 case "I":
+
+                    try {
+
                         System.out.println("Please enter Stock Unit to be added (unitId, productId, quantity)");
 
                         System.out.println("Please enter Stock Unit: SerialNo");
                         Integer srNo = sc1.nextInt();
 
-                         System.out.println("Please enter Stock Unit: Unit Id");
+                        System.out.println("Please enter Stock Unit: Unit Id");
                         Integer unitId = sc1.nextInt();
 
                         System.out.println("Please enter Stock Unit: Product Id");
@@ -80,18 +91,49 @@ public class ImsLoadData {
                         }else{
                             System.out.println("Error obtained while adding Stock Unit detail, Please contact support");
                         }
+                    }catch (InputMismatchException ex){
+                        System.out.println("Please enter correct input from your keyboard");
+                    }finally {
                         break;
+                    }
+
+
 
                 case "L":
 
                         System.out.println("Displaying List of All Products");
-                        idao.listAllProduct();
+                        ArrayList<Product> prList = new ArrayList<>();
+                        prList = idao.listAllProduct();
+                        if (prList.isEmpty()){
+
+                            for (Product pr : prList){
+                                System.out.println(pr);
+                            }
+
+                        }else {
+                            System.out.println("Product List is Empty, No Data to display");
+                        }
+
                         break;
 
                 case "P":
 
                         System.out.println("Displaying List of All Stock Units");
-                        idao.listAllStockUnit();
+                        //idao.listAllStockUnit();
+
+                        ArrayList<StockUnit> suList = new ArrayList<>();
+                        suList = idao.listAllStockUnit();
+
+                        if (!suList.isEmpty()) {
+
+                            for (StockUnit sum : suList){
+                                // System.out.println(sum);
+                                System.out.println("Unit Id : "+sum.getUnitId()+",Product Id : "+sum.getProductId()+" , Quantity : "+sum.getQuantity());
+                            }
+                          }else {
+                            System.out.println("Stock Unit List is Empty, No Data to display");
+                        }
+
                         break;
 
                 case "S":
