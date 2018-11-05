@@ -1,5 +1,8 @@
-package com.amit.ims;
+package com.amit.ims.testsuite;
 
+import com.amit.ims.InventoryDao;
+import com.amit.ims.Product;
+import com.amit.ims.StockUnit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

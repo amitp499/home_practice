@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class ImsLoadData {
+public class ImsMain {
 
 
 
@@ -104,7 +104,7 @@ public class ImsLoadData {
                         System.out.println("Displaying List of All Products");
                         ArrayList<Product> prList = new ArrayList<>();
                         prList = idao.listAllProduct();
-                        if (prList.isEmpty()){
+                        if (!prList.isEmpty()){
 
                             for (Product pr : prList){
                                 System.out.println(pr);

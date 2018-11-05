@@ -1,19 +1,29 @@
-package com.amit.ims;
+package com.amit.ims.testsuite;
 
+import com.amit.ims.InventoryDao;
+import com.amit.ims.Product;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runners.Parameterized;
 
+import java.util.*;
+
 import static junit.framework.TestCase.assertEquals;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 public class AddNewProdcut_Test {
 
     InventoryDao id = null;
+    Product pdt;
+    boolean expectedValue;
+
+    /*public AddNewProdcut_Test(boolean expectedValue,Product pdt ){
+
+        this.expectedValue=expectedValue;
+        this.pdt=pdt;
+
+    }*/
 
 
     @Before
@@ -90,12 +100,22 @@ public class AddNewProdcut_Test {
 
     }
 
+    /*@Parameterized.Parameters
+    public static Collection params(){
+
+        List data = new ArrayList();
+       // data.add(true, id.addProduct(new Product(501,"Saree","LadiesWear",29)));
+        //data.add(new Object[] {true,addProduct(new Product(501,"Saree","LadiesWear",29))});
+
+        return data;
+    }*/
+
     @Test
     public void valAddProductHappyPath(){
 
-        boolean addPrd = id.addProduct(new Product(501,"Saree","LadiesWear",29));
+       // boolean addPrd = id.addProduct(new Product(501,"Saree","LadiesWear",29));
 
-        assertEquals(true,addPrd);
+        assertEquals(expectedValue,pdt);
 
     }
 }

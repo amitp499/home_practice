@@ -1,13 +1,10 @@
-package com.amit.ims;
+package com.amit.ims.testsuite;
 
-import org.hamcrest.collection.IsEmptyCollection;
+
+import com.amit.ims.InventoryDao;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static junit.framework.TestCase.assertEquals;
 
 public class SearchStockUnitsByProductName_Test {

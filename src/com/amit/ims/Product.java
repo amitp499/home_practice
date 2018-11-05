@@ -7,7 +7,7 @@ public class Product {
     private String description;
     private Integer catalogId;
 
-    Product(Integer id,String name,String description , Integer catalogId ){
+    public Product(Integer id,String name,String description , Integer catalogId ){
 
         this.catalogId =catalogId;
         this.description = description;

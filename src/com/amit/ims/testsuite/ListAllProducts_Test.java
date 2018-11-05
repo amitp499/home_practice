@@ -1,5 +1,6 @@
-package com.amit.ims;
+package com.amit.ims.testsuite;
 
+import com.amit.ims.InventoryDao;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,9 +10,7 @@ import java.util.ArrayList;
 import org.hamcrest.collection.IsEmptyCollection;
 
 import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
-import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasProperty;
 

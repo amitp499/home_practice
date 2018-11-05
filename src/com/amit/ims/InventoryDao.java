@@ -10,13 +10,13 @@ public class InventoryDao {
 
     HashMap<Integer, StockUnit> su = new HashMap<>();
 
-    InventoryDao(){
+    public InventoryDao(){
 
         loadData();
     }
 
 
-    protected boolean addStockUnit(Integer no, StockUnit sua) {
+    public boolean addStockUnit(Integer no, StockUnit sua) {
         boolean suFlag=false;
         Integer valZero = 0;
 
@@ -51,7 +51,7 @@ public class InventoryDao {
         return suFlag;
     }
 
-    protected boolean addProduct(Product pra) {
+    public boolean addProduct(Product pra) {
 
         boolean prdAdd = false;
         Integer ptt= 0;
@@ -81,7 +81,7 @@ public class InventoryDao {
 
     }
 
-    protected void addProductCatalog(ProductCatalog pca) {
+    public void addProductCatalog(ProductCatalog pca) {
 
         pc.add(pca);
     }
